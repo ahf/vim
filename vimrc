@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Wed 16 Feb 21:04:22 2011
+" Most recent update: Mon  4 Apr 02:24:19 2011
 "
 
 let g:name = 'Alexander Færøy'
@@ -444,6 +444,15 @@ if has("autocmd")
             iabbrev <buffer> jqu QUrl
         endfunction
 
+        function! <SID>abbrev_agda()
+            iabbrev <buffer> forall ∀
+            iabbrev <buffer> to →
+            iabbrev <buffer> lambda λ
+            iabbrev <buffer> Sigma Σ
+            iabbrev <buffer> exists ∃
+            iabbrev <buffer> equiv ≡
+        endfunction
+
         function! <SID>abbrev_php()
             iabbrev <buffer> jcl class
             iabbrev <buffer> jfu function
@@ -484,6 +493,7 @@ if has("autocmd")
             autocmd FileType ruby :call <SID>abbrev_ruby()
             autocmd FileType c :call <SID>abbrev_c()
             autocmd FileType python :call <SID>abbrev_python()
+            autocmd FileType agda :call <SID>abbrev_agda()
         augroup END
     endif
 
