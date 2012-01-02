@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  2 Jan 19:14:04 2012
+" Most recent update: Mon  2 Jan 19:27:16 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -575,6 +575,10 @@ if has("autocmd")
         autocmd BufRead COMMIT_EDITMSG setlocal nobackup
 
         autocmd BufWritePre * call <SID>UpdateCopyrightHeaders()
+
+        try
+            autocmd QuickFixCmdPost * botright cwindow 5
+        endtry
     augroup END
 endif
 
