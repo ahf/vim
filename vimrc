@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  2 Jan 19:27:16 2012
+" Most recent update: Mon  2 Jan 19:29:55 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -403,6 +403,15 @@ let g:miniBufExplModSelTarget = 1
 noremap <Leader>gp gqap
 noremap <Leader>clr :s/^.*$//<CR>:nohls<CR>
 noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
+
+nmap <Leader>cwc :cclose<CR>
+nmap <Leader>cwo :botright copen 5<CR><C-w>p
+nmap <Leader>cn :cnext<CR>
+nmap <Leader>cf :cnf<CR>
+nmap - :cnext<CR>
+nmap <Leader>- :cnf<CR>
+nmap <Leader>cp :cprevious<CR>
+nmap <Leader>ce :clast<CR>
 
 if v:version >= 700
     nmap <C-t> :tabnew<cr>
