@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  2 Jan 19:11:24 2012
+" Most recent update: Mon  2 Jan 19:14:04 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -364,6 +364,8 @@ endif
 if has("eval") && v:version >= 700
     if "horus" == hostname()
         let &makeprg="nice -n7 make -j3 2>&1"
+    elseif "ra" == hostname()
+        let &makeprg="nice -n7 make -j8 2>&1"
     elseif "atum" == hostname()
         let &makeprg="nice -n7 make -j3 2>&1"
     elseif "anubis" == hostname()
