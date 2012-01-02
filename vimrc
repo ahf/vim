@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  2 Jan 19:38:21 2012
+" Most recent update: Mon  2 Jan 20:44:50 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -427,6 +427,31 @@ if v:version >= 700
 endif
 
 if has("autocmd")
+    function! <SID>InWebKitDirectory()
+        " Search for the WebCore directory.
+        let l:directory = "/Source/WebCore"
+        let l:max_depth = 15
+
+        while (! isdirectory(getcwd() . l:directory))
+            if (l:max_depth == 0)
+                return 0
+            endif
+
+            let l:directory = "/.." . l:directory
+            let l:max_depth -= 1
+        endwhile
+
+        return 1
+    endfunction
+
+    function! <SID>MaybeEnableWebKitHacking()
+        let l:webkit_build_command = "build-webkit --qt --no-3d-canvas --no-video --no-svg"
+
+        if (<SID>InWebKitDirectory())
+            let &makeprg = l:webkit_build_command
+        endif
+    endfunction
+
     if has("eval")
         function! <SID>abbrev_cpp()
             iabbrev <buffer> jin #include
@@ -592,12 +617,13 @@ if has("autocmd")
         autocmd BufRead svn-commit.tmp setlocal nobackup
         autocmd BufRead COMMIT_EDITMSG setlocal nobackup
 
-        autocmd BufWritePre * call <SID>UpdateCopyrightHeaders()
-
+        autocmd BufWritePre * :call <SID>UpdateCopyrightHeaders()
         try
             autocmd QuickFixCmdPost * botright cwindow 8
         endtry
     augroup END
+
+    autocmd VimEnter * :call <SID>MaybeEnableWebKitHacking()
 endif
 
 if has("eval")
