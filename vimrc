@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  4 Apr 02:24:19 2011
+" Most recent update: Mon  2 Jan 19:11:24 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -145,10 +145,6 @@ if has("eval")
 
     if has("gui")
         call LoadColourScheme("inkpot:night:darkblue:elflord")
-
-        if has("transparency") && &background == "dark"
-            set transparency=3
-        endif
     else
         if has("autocmd")
             autocmd VimEnter *
