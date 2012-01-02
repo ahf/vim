@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  2 Jan 19:29:55 2012
+" Most recent update: Mon  2 Jan 19:34:05 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -127,6 +127,15 @@ if has("gui")
     set guioptions-=R
 
     set mousemodel=popup
+endif
+
+if has("autocmd")
+    au FileType qf
+        \ if &buftype == "quickfix" |
+        \     setlocal statusline=%2*%-3.3n%0* |
+        \     setlocal statusline+=\ \[Compiler\ Messages\] |
+        \     setlocal statusline+=%=%2*\ %<%P |
+        \ endif
 endif
 
 if has("eval")
