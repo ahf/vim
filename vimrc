@@ -1,7 +1,7 @@
 "
 " Alexander Færøy <ahf@0x90.dk>
 "
-" Most recent update: Mon  2 Jan 20:44:50 2012
+" Most recent update: Sat 28 Jan 21:39:35 2012
 "
 
 let g:name = 'Alexander Færøy'
@@ -616,6 +616,7 @@ if has("autocmd")
 
         autocmd BufRead svn-commit.tmp setlocal nobackup
         autocmd BufRead COMMIT_EDITMSG setlocal nobackup
+        autocmd BufRead COMMIT_EDITMSG.edit setlocal nobackup ft=gitcommit
 
         autocmd BufWritePre * :call <SID>UpdateCopyrightHeaders()
         try
